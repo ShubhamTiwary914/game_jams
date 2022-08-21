@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Environment/woodenWall.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/Environment/WoodenFloor.jpg" type="Texture" id=2]
 [ext_resource path="res://scenes/PhotoFrame.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
 
-[node name="World" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.0714, 27.7616 )
+
+[node name="Hallway" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Wall" type="Sprite" parent="Environment"]
 position = Vector2( 518.033, 39.7613 )
@@ -37,7 +41,31 @@ scale = Vector2( 0.426702, 0.620144 )
 texture = ExtResource( 2 )
 offset = Vector2( 1220.79, -34.4329 )
 
-[node name="Ponchong" parent="." instance=ExtResource( 3 )]
+[node name="Ponchong(frame)" parent="Environment" instance=ExtResource( 3 )]
 position = Vector2( 343.083, 99.9713 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Entities" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Player" parent="Entities" instance=ExtResource( 4 )]
+
+[node name="EndBoundColliders" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="WallEnd" type="StaticBody2D" parent="EndBoundColliders"]
+editor/display_folded = true
+position = Vector2( 124.058, 377.266 )
+scale = Vector2( 20, 1 )
+
+[node name="WallCollider" type="CollisionShape2D" parent="EndBoundColliders/WallEnd"]
+position = Vector2( 15.5318, -111.273 )
+shape = SubResource( 1 )
+
+[node name="BottomEnd" type="StaticBody2D" parent="EndBoundColliders"]
+editor/display_folded = true
+position = Vector2( 100, 669.664 )
+scale = Vector2( 20, 1 )
+
+[node name="BotCollider" type="CollisionShape2D" parent="EndBoundColliders/BottomEnd"]
+position = Vector2( 15.1617, -26.1444 )
+shape = SubResource( 1 )

@@ -1,8 +1,9 @@
-extends KinematicBody2D
+ extends KinematicBody2D
 
 
 onready var playerData = load("res://Store/playerData.tres")
 onready var player = get_node(".");
+onready var playerSprite = $Sprite;
 
 
 
@@ -18,6 +19,14 @@ func _process(delta):
 	playerVelocity.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * playerData.speed;
 	playerVelocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * playerData.speed;
 	playerVelocity = move_and_slide(playerVelocity)
+	playerSpriteFlip(playerVelocity)
 	
+
+func playerSpriteFlip(playerVelocity : Vector2):
+	if (playerVelocity.x < 0):
+		playerSprite.flip_h = true;
+	if (playerVelocity.x > 0):
+		playerSprite.flip_h = false;
+
 
 
