@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Items/frame.png" type="Texture" id=1]
+[ext_resource path="res://assets/Items/ponchong group.png" type="Texture" id=2]
+
+[node name="PhotoFrame" type="Node2D"]
+
+[node name="OuterFrame" type="Sprite" parent="."]
+position = Vector2( 88.7592, 59.1438 )
+scale = Vector2( 6.54745, 4.69649 )
+texture = ExtResource( 1 )
+
+[node name="InnerPhoto" type="Sprite" parent="."]
+position = Vector2( 91.4513, 59.709 )
+scale = Vector2( 0.170705, 0.0965469 )
+texture = ExtResource( 2 )
