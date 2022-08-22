@@ -22,6 +22,7 @@ func setFurnitures(roomData):
 		var furniture = furnitureScene.instance()
 		add_child(furniture)
 		furniture.global_position = furnitureData.spawnPosition;
+		furniture.setSprite(furnitureData)
 		furnitureNodes.append(furniture)
 		
 		
