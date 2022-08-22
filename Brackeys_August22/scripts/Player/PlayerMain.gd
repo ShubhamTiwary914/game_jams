@@ -5,13 +5,13 @@ onready var playerData = load("res://Store/playerData.tres")
 onready var player = get_node(".");
 onready var playerSprite = $Sprite;
 
-onready var dialogBox_scene = load("res://scenes/dialogBox.tscn")
+onready var dialogBox_scene = load("res://scenes/Interactables/dialogBox.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.position = playerData.spawnPoint;
-	dialogTest("Hello World")
+	#dialogTest("Hello World")
 	
 func dialogTest(textToLoad: String):
 	var dialogBox = dialogBox_scene.instance();

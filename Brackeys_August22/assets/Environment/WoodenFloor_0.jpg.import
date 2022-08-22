@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WoodenFloor.jpg-a0af23c07fec825b37be502cbaa5418d.stex"
+path="res://.import/WoodenFloor_0.jpg-bf472bca4f10461a2dbaebff0c672f96.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Environment/WoodenFloor.jpg"
-dest_files=[ "res://.import/WoodenFloor.jpg-a0af23c07fec825b37be502cbaa5418d.stex" ]
+source_file="res://assets/Environment/WoodenFloor_0.jpg"
+dest_files=[ "res://.import/WoodenFloor_0.jpg-bf472bca4f10461a2dbaebff0c672f96.stex" ]
 
 [params]
 
