@@ -45,7 +45,6 @@ offset = Vector2( 1220.79, -34.4329 )
 position = Vector2( 343.083, 99.9713 )
 
 [node name="Entities" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Player" parent="Entities" instance=ExtResource( 4 )]
 

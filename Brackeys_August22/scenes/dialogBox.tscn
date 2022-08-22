@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Interactables/dialogBox.gd" type="Script" id=1]
+[ext_resource path="res://assets/Character/DialogBoard.png" type="Texture" id=2]
+[ext_resource path="res://assets/Fonts/Silkscreen-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="dilogBox" type="Node2D"]
+script = ExtResource( 1 )
+dialogTextDelay = 0.15
+
+[node name="dialogFrame" type="Sprite" parent="."]
+position = Vector2( 392.564, 451.94 )
+scale = Vector2( 16.3711, 9.64722 )
+texture = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = 94.5301
+margin_top = 359.334
+margin_right = 684.53
+margin_bottom = 559.334
+
+[node name="colorRect" type="ColorRect" parent="Control"]
+margin_right = 600.0
+margin_bottom = 200.0
+color = Color( 0.0509804, 0.109804, 0.12549, 1 )
+
+[node name="dialogText" type="Label" parent="Control/colorRect"]
+margin_right = 600.0
+margin_bottom = 200.0
+rect_clip_content = true
+custom_fonts/font = SubResource( 1 )
+text = "
+"
+autowrap = true
+clip_text = true
