@@ -6,5 +6,4 @@ export (Image) var wallSprite;
 export (Image) var floorSprite;
 
 
-export (Array, String) var itemName;
-export (Array, Vector2) var itemPos
+export (Array, String) var itemNames;

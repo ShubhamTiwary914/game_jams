@@ -8,5 +8,4 @@
 script = ExtResource( 2 )
 wallSprite = ExtResource( 3 )
 floorSprite = ExtResource( 1 )
-itemName = [  ]
-itemPos = [  ]
+itemNames = [ "Drawer_01", "Window_01", "Door_01" ]
