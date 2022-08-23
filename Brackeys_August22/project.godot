@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="Brackeys_August22"
 run/main_scene="res://scenes/World.tscn"
-config/icon="res://assets/Items/candle.png"
+config/icon="res://assets/holdableItems/candle.png"
 
 [input]
 
