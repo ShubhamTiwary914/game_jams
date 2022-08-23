@@ -11,24 +11,18 @@ onready var player = get_node(".");
 onready var playerAnimatonSprite = $playerAnimation;
 
 
+#Default = Magnifying_Glass
+onready var itemSwapPressed = false;
+onready var itemHeld = "Default";
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.position = playerData.spawnPoint;
 	itemSlots = worldNode.itemSlots;
-	playerAnimatonSprite.play("Idle")
 	
-	
-	
-func dialogTest(textToLoad: String):
-	var dialogBox = dialogBox_scene.instance();
-	add_child(dialogBox)
-	dialogBox.global_position = Vector2(0,0)
-	dialogBox.runTextDialog(textToLoad)
-	
-	
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,7 +31,10 @@ func _process(delta):
 	playerVelocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * playerData.speed;
 	playerVelocity = move_and_slide(playerVelocity)
 	playerSpriteFlip(playerVelocity)
+	playerHandle_heldItem()
 	playerhandleAnimations(playerVelocity)
+	
+	
 	
 	
 	
@@ -51,8 +48,43 @@ func playerSpriteFlip(playerVelocity : Vector2):
 
 func playerhandleAnimations(playerVel : Vector2):
 	if !(playerVel.x == 0 and playerVel.y == 0):
-		playerAnimatonSprite.play("Walk")
+		playerAnimatonSprite.play("Walk" + itemHeld)
 	else:
-		playerAnimatonSprite.play("Idle")
+		playerAnimatonSprite.play("Idle" + itemHeld)
+ 
 
-
+    #   ------    ITEMS / INTERACTABLES  SECTION   ------
+func playerHandle_heldItem():
+	if(Input.is_action_pressed("slot1")):
+		var slot1Sprite = worldNode.itemSlots.slot1Sprite;
+		swapItems(1, slot1Sprite)
+	if(Input.is_action_pressed("slot2")):
+		var slot2Sprite = worldNode.itemSlots.slot1Sprite;
+		swapItems(2, slot2Sprite)
+		
+func swapItems(slotPressed, spriteNode):
+	if(!itemSwapPressed):
+		var Holder = itemHeld
+		if(slotPressed == 1):
+			if(worldNode.itemSlots.slot1Value != ""):
+				itemHeld = worldNode.itemSlots.slot1Value
+				worldNode.itemSlots.setItemSlot(1, Holder)
+		if(slotPressed == 2):
+			if(worldNode.itemSlots.slot2Value != ""):
+				itemHeld = worldNode.itemSlots.slot2Value
+				worldNode.itemSlots.setItemSlot(2, Holder)
+		itemSwapPressed = true;
+		enableLighting()
+		swapItem_cooldown()
+	
+	
+func swapItem_cooldown():
+	yield(get_tree().create_timer(1), "timeout")
+	itemSwapPressed = false;
+	
+	
+func enableLighting():
+	if(itemHeld == "Candle"):
+		$CandleLight.enabled = true;
+	else:
+		$CandleLight.enabled = false;

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/candle.png-596069fc4edbe547237aa385c124a536.stex"
+path="res://.import/playerIdleCandle4.png-4f8dd3d4d1ea7796b862903ec9c5231a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/holdableItems/candle.png"
-dest_files=[ "res://.import/candle.png-596069fc4edbe547237aa385c124a536.stex" ]
+source_file="res://assets/Character/playerIdleCandle4.png"
+dest_files=[ "res://.import/playerIdleCandle4.png-4f8dd3d4d1ea7796b862903ec9c5231a.stex" ]
 
 [params]
 
