@@ -36,7 +36,10 @@ position = Vector2( -269.036, 519.62 )
 scale = Vector2( 0.426702, 0.620144 )
 offset = Vector2( 1220.79, -34.4329 )
 
+[node name="Furnitures" type="Node2D" parent="."]
+
 [node name="Entities" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Player" parent="Entities" instance=ExtResource( 2 )]
 

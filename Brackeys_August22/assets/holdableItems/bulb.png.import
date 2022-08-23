@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/candle.png-386a4aed295820907fa0a088d461d8d4.stex"
+path="res://.import/bulb.png-99c8c25b38cb84a7edd83814ec3f5fd1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Items/candle.png"
-dest_files=[ "res://.import/candle.png-386a4aed295820907fa0a088d461d8d4.stex" ]
+source_file="res://assets/holdableItems/bulb.png"
+dest_files=[ "res://.import/bulb.png-99c8c25b38cb84a7edd83814ec3f5fd1.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
