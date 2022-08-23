@@ -8,4 +8,7 @@ script = ExtResource( 2 )
 furnitureSprite = ExtResource( 1 )
 spawnPosition = Vector2( 200, 280 )
 furnitureSize = Vector2( 8, 10 )
+furnitureType = ""
+lightIntensity = 0.0
+lightRange = 0.0
 dialogSet = [  ]

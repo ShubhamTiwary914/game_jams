@@ -8,7 +8,7 @@ onready var dialogBox_scene = load("res://scenes/Interactables/dialogBox.tscn")
 
 onready var playerData = load("res://Store/playerData.tres")
 onready var player = get_node(".");
-onready var playerSprite = $Sprite;
+onready var playerAnimatonSprite = $playerAnimation;
 
 
 
@@ -16,6 +16,7 @@ onready var playerSprite = $Sprite;
 func _ready():
 	player.position = playerData.spawnPoint;
 	itemSlots = worldNode.itemSlots;
+	playerAnimatonSprite.play("Idle")
 	
 	
 	
@@ -36,15 +37,22 @@ func _process(delta):
 	playerVelocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * playerData.speed;
 	playerVelocity = move_and_slide(playerVelocity)
 	playerSpriteFlip(playerVelocity)
+	playerhandleAnimations(playerVelocity)
 	
 	
 	
 
 func playerSpriteFlip(playerVelocity : Vector2):
 	if (playerVelocity.x < 0):
-		playerSprite.flip_h = true;
+		playerAnimatonSprite.flip_h = true;
 	if (playerVelocity.x > 0):
-		playerSprite.flip_h = false;
+		playerAnimatonSprite.flip_h = false;
 
+
+func playerhandleAnimations(playerVel : Vector2):
+	if !(playerVel.x == 0 and playerVel.y == 0):
+		playerAnimatonSprite.play("Walk")
+	else:
+		playerAnimatonSprite.play("Idle")
 
 

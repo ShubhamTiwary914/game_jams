@@ -10,4 +10,5 @@ export (String) var furnitureType;
 export (float) var lightIntensity;
 export (float) var lightRange;
 
+
 export (Array, String) var dialogSet; 
