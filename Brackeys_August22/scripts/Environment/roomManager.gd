@@ -8,14 +8,16 @@ onready var furnitureHolder = $Furnitures;
 onready var furnitureScene = load("res://scenes/Items/Furnitures.tscn")
 onready var furnitureNodes = [];
 
+onready var playerNode = $Entities/Player
 
 
-func setRoom(roomKey):
+func setRoom(roomKey, playerPos : Vector2, playerFlipped : bool):
 	var roomData = load("res://Store/rooms/" + roomKey + ".tres")
 	wallSprite.texture = roomData.wallSprite;
 	for floorChild in floorNode.get_children():
 		floorChild.texture = roomData.floorSprite;
 	setFurnitures(roomData)
+	setPlayerSpawn(playerPos, playerFlipped)
 	
 	
 func setFurnitures(roomData):
@@ -28,7 +30,9 @@ func setFurnitures(roomData):
 		furnitureNodes.append(furniture)
 		
 		
-
+func setPlayerSpawn(playerPos, isPlayerFlipped):
+	playerNode.global_position = playerPos
+	playerNode.playerAnimatonSprite.flip_h = isPlayerFlipped
 	
 	
 	

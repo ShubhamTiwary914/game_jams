@@ -1,13 +1,18 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=1]
+[ext_resource path="res://assets/Items/Door_01.png" type="Texture" id=1]
+[ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=2]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 furnitureName = "Door_01"
-spawnPosition = Vector2( 0, 0 )
-furnitureSize = Vector2( 0, 0 )
-furnitureType = ""
+furnitureSprite = ExtResource( 1 )
+spawnPosition = Vector2( 800, 300 )
+furnitureSize = Vector2( 6, 8 )
+dialogSet = [  ]
+furnitureType = "door"
 lightIntensity = 0.0
 lightRange = 0.0
-dialogSet = [ "", "" ]
+doorRoom = "hallway_03"
+door_isLocked = false
+doorIsRight = false

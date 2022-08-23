@@ -6,7 +6,7 @@
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="spawnLayer" type="Node2D" parent="."]
+[node name="roomLayer" type="Node2D" parent="."]
 
 [node name="itemSlots" parent="." instance=ExtResource( 2 )]
 position = Vector2( -8.35095, 8.35094 )

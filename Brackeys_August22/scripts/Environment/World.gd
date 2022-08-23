@@ -12,10 +12,14 @@ onready var dialogBoard = $dialogBoard;
 onready var isDialogActive = false;
 
 
+onready var playerSpawnPt;
+onready var playerFlippedX = false;
+
+
 func _ready():
-	var room = generalRoomScene.instance();
-	$spawnLayer.add_child(room)
-	room.setRoom("attic")
+	var playerData = load("res://Store/playerData.tres")
+	playerSpawnPt = playerData.spawnPoint;
+	loadNewRoom("attic", playerSpawnPt, false)
 
 
 func randomNumberGenerator(start, end) -> int:
@@ -47,6 +51,12 @@ func skipDialog():
 		dialogBoard.get_child(0).queue_free()
 		isDialogActive = false;
 	
-				
+
+func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
+	if($roomLayer.get_child_count() != 0):
+		$roomLayer.get_child(0).queue_free()
+	var room = generalRoomScene.instance();
+	$roomLayer.add_child(room)
+	room.setRoom(newRoom, playerSpawn, playerFlipped)				
 
 	

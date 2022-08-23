@@ -103,6 +103,7 @@ func onFurniture_rangeEntered(furnitureData, collisionType):
 			
 func mouseClickHandler():
 	if(Input.is_action_pressed("mouseClick")):
+		worldNode.playerFlippedX = $playerAnimation.flip_h
 		if(!mouseHasClicked):
 			worldNode.interactiveMouse_clicked()
 			mouseHasClicked = true;
@@ -116,7 +117,6 @@ func mouseClick_cooldown():
 
 func dialogClick_handler():
 	if(Input.is_action_pressed("dialogSkip")):
-		print('x')
 		worldNode.skipDialog()
 			
 		

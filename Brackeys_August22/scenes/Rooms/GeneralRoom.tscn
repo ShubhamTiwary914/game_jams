@@ -39,12 +39,10 @@ offset = Vector2( 1220.79, -34.4329 )
 [node name="Furnitures" type="Node2D" parent="."]
 
 [node name="Entities" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Player" parent="Entities" instance=ExtResource( 2 )]
 
 [node name="EndBoundColliders" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="WallEnd" type="StaticBody2D" parent="EndBoundColliders"]
 editor/display_folded = true
@@ -53,6 +51,26 @@ scale = Vector2( 20, 1 )
 
 [node name="WallCollider" type="CollisionShape2D" parent="EndBoundColliders/WallEnd"]
 position = Vector2( 15.5318, -111.273 )
+shape = SubResource( 1 )
+
+[node name="LeftEdgeEnd" type="StaticBody2D" parent="EndBoundColliders"]
+editor/display_folded = true
+position = Vector2( -42.8944, 475.317 )
+rotation = -1.57522
+scale = Vector2( 20, 1 )
+
+[node name="EdgeCollider" type="CollisionShape2D" parent="EndBoundColliders/LeftEdgeEnd"]
+position = Vector2( 21.8919, 0.0286026 )
+shape = SubResource( 1 )
+
+[node name="RightEdgeEnd" type="StaticBody2D" parent="EndBoundColliders"]
+editor/display_folded = true
+position = Vector2( 1070.12, 517.718 )
+rotation = -1.57522
+scale = Vector2( 20, 1 )
+
+[node name="EdgeCollider" type="CollisionShape2D" parent="EndBoundColliders/RightEdgeEnd"]
+position = Vector2( 21.8919, 0.0286026 )
 shape = SubResource( 1 )
 
 [node name="BottomEnd" type="StaticBody2D" parent="EndBoundColliders"]
