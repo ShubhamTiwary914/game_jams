@@ -3,7 +3,6 @@
 
 onready var worldNode = get_tree().root.get_child(0)
 onready var itemSlots : Node2D;
-onready var dialogBox_scene = load("res://scenes/Interactables/dialogBox.tscn")
 
 
 onready var playerData = load("res://Store/playerData.tres")
@@ -14,8 +13,10 @@ onready var playerAnimatonSprite = $playerAnimation;
 #Default = Magnifying_Glass
 onready var itemSwapPressed = false;
 onready var itemHeld = "Default";
+onready var furnitureInteractable = "";
 
 
+onready var mouseHasClicked = false;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,18 +34,18 @@ func _process(delta):
 	playerSpriteFlip(playerVelocity)
 	playerHandle_heldItem()
 	playerhandleAnimations(playerVelocity)
+	mouseClickHandler()
+	dialogClick_handler()
 	
 	
 	
-	
-	
+	 #   ------    SPRITES / ANIMATION  SECTION   ------
 
 func playerSpriteFlip(playerVelocity : Vector2):
 	if (playerVelocity.x < 0):
 		playerAnimatonSprite.flip_h = true;
 	if (playerVelocity.x > 0):
 		playerAnimatonSprite.flip_h = false;
-
 
 func playerhandleAnimations(playerVel : Vector2):
 	if !(playerVel.x == 0 and playerVel.y == 0):
@@ -53,7 +54,8 @@ func playerhandleAnimations(playerVel : Vector2):
 		playerAnimatonSprite.play("Idle" + itemHeld)
  
 
-    #   ------    ITEMS / INTERACTABLES  SECTION   ------
+
+    #   ------    ITEMS  SECTION   ------
 func playerHandle_heldItem():
 	if(Input.is_action_pressed("slot1")):
 		var slot1Sprite = worldNode.itemSlots.slot1Sprite;
@@ -79,7 +81,7 @@ func swapItems(slotPressed, spriteNode):
 	
 	
 func swapItem_cooldown():
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(playerData.itemSwap_cooldown), "timeout")
 	itemSwapPressed = false;
 	
 	
@@ -88,3 +90,35 @@ func enableLighting():
 		$CandleLight.enabled = true;
 	else:
 		$CandleLight.enabled = false;
+
+
+  #   ------    INTERACTABLES  SECTION   ------
+func onFurniture_rangeEntered(furnitureData, collisionType):
+	if(furnitureData != null):
+		if(collisionType == "enter"):
+			worldNode.createInteractive_button(furnitureData)
+		else:
+			worldNode.destroyInteractive_button(furnitureData.furnitureName)
+	
+			
+func mouseClickHandler():
+	if(Input.is_action_pressed("mouseClick")):
+		if(!mouseHasClicked):
+			worldNode.interactiveMouse_clicked()
+			mouseHasClicked = true;
+			mouseClick_cooldown()
+
+	
+func mouseClick_cooldown():
+	yield(get_tree().create_timer(playerData.mouseClick_cooldown), "timeout")
+	mouseHasClicked = false;
+		
+
+func dialogClick_handler():
+	if(Input.is_action_pressed("dialogSkip")):
+		print('x')
+		worldNode.skipDialog()
+			
+		
+		
+	

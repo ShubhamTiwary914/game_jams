@@ -4,5 +4,10 @@
 
 [resource]
 script = ExtResource( 1 )
+furnitureName = "Door_01"
 spawnPosition = Vector2( 0, 0 )
+furnitureSize = Vector2( 0, 0 )
+furnitureType = ""
+lightIntensity = 0.0
+lightRange = 0.0
 dialogSet = [ "", "" ]

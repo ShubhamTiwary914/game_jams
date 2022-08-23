@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource( 2 )
+furnitureName = "Window_01"
 furnitureSprite = ExtResource( 1 )
 spawnPosition = Vector2( 440, 200 )
 furnitureSize = Vector2( 5, 5 )
 furnitureType = "light"
 lightIntensity = 1.0
 lightRange = 4.4
-dialogSet = [ "", "" ]
+dialogSet = [ "Bo bo bo", "Window!" ]

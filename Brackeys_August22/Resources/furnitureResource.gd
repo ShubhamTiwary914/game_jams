@@ -1,7 +1,7 @@
 extends Resource 
 class_name furnitureResource
 
-
+export (String) var furnitureName;
 export (Image) var furnitureSprite;
 export (Vector2) var spawnPosition;
 export (Vector2) var furnitureSize;

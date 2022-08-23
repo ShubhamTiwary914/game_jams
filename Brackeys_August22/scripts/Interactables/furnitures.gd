@@ -3,10 +3,13 @@ extends Node2D
 onready var lightTexture = load("res://assets/Items/lightTexture.png")
 onready var shadowTexture = load("res://assets/Items/shadow.png")
 
+onready var furnitureData;
+
 func setSprite(selfData):
 	$Sprite.scale = selfData.furnitureSize;
 	if(selfData.furnitureSprite != null):
-	  $Sprite.texture =  selfData.furnitureSprite
+		$Sprite.texture =  selfData.furnitureSprite
+		furnitureData = selfData
 	activateLightSource(selfData)
 
 	
@@ -21,3 +24,11 @@ func activateLightSource(selfData):
 
 	
 
+func _on_furnitureArea_body_entered(body):
+	if(body.name == "Player"):
+		body.onFurniture_rangeEntered(furnitureData, "enter")
+		
+		
+func _on_furnitureArea_body_exited(body):
+	if(body.name == "Player"):
+		body.onFurniture_rangeEntered(furnitureData, "exit")
