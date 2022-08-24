@@ -17,12 +17,13 @@ onready var isDialogActive = false;
 onready var playerSpawnPt;
 onready var playerFlippedX = false;
 onready var roomHasLoaded = false;
+onready var currentRoomFloor : String;
 
 
 func _ready():
 	var playerData = load("res://Store/playerData.tres")
 	playerSpawnPt = playerData.spawnPoint;
-	loadNewRoom("hallway_03", playerSpawnPt, false)
+	loadNewRoom("attic", playerSpawnPt, false)
 
 
 func randomNumberGenerator(start, end) -> int:
@@ -63,7 +64,7 @@ func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
 	room.setRoom(newRoom, playerSpawn, playerFlipped)	
 	var roomDialog = roomDialog_scene.instance()
 	add_child(roomDialog)
-	roomDialog.play_roomDialog(newRoom)
+	roomDialog.play_roomDialog(newRoom, currentRoomFloor)
 	
 				
 

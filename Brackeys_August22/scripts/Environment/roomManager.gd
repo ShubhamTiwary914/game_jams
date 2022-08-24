@@ -9,10 +9,12 @@ onready var furnitureScene = load("res://scenes/Items/Furnitures.tscn")
 onready var furnitureNodes = [];
 
 onready var playerNode = $Entities/Player
+onready var worldNode = get_tree().root.get_child(0)
 
 
 func setRoom(roomKey, playerPos : Vector2, playerFlipped : bool):
 	var roomData = load("res://Store/rooms/" + roomKey + ".tres")
+	worldNode.currentRoomFloor = roomData.roomFloor
 	wallSprite.texture = roomData.wallSprite;
 	for floorChild in floorNode.get_children():
 		floorChild.texture = roomData.floorSprite;

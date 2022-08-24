@@ -31,25 +31,29 @@ func _on_mouseClicked():
 	if(furnitureData.furnitureType == "door"):
 		doorClick_handler()
 	else:
-		dialogSet_handler()
+		if(len(furnitureData.dialogSet) > 0):
+			var dialogText = furnitureData.dialogSet[worldNode.randomNumberGenerator(0, len(furnitureData.dialogSet))]
+			dialogSet_handler(dialogText)
 		
 	
 func doorClick_handler():
-	if(!worldNode.roomHasLoaded):
-			worldNode.roomHasLoaded = true;
-			var spawnPt = worldNode.playerSpawnPt;
-			if(furnitureData.doorIsRight):
-				spawnPt.x = 50;
-			else:
-				spawnPt.x = 850
-			worldNode.loadNewRoom(furnitureData.doorRoom, spawnPt, worldNode.playerFlippedX)
-			worldNode.loadRoom_cooldown()	
+	if(furnitureData.door_isLocked):
+		dialogSet_handler("Door is Locked! Look for a key...")
+	else:
+		if(!worldNode.roomHasLoaded):
+				worldNode.roomHasLoaded = true;
+				var spawnPt = worldNode.playerSpawnPt;
+				if(furnitureData.doorIsRight):
+					spawnPt.x = 50;
+				else:
+					spawnPt.x = 850
+				worldNode.loadNewRoom(furnitureData.doorRoom, spawnPt, worldNode.playerFlippedX)
+				worldNode.loadRoom_cooldown()	
 
 
-func dialogSet_handler():
-	if(len(furnitureData.dialogSet) > 0):
-			var dialogBox = dialogBox_scene.instance()
-			worldNode.dialogBoard.add_child(dialogBox)
-			worldNode.isDialogActive = true;
-			dialogBox.runTextDialog(furnitureData.dialogSet[worldNode.randomNumberGenerator(0, len(furnitureData.dialogSet))])
+func dialogSet_handler(dialogText):
+	var dialogBox = dialogBox_scene.instance()
+	worldNode.dialogBoard.add_child(dialogBox)
+	worldNode.isDialogActive = true;
+	dialogBox.runTextDialog(dialogText)
 	
