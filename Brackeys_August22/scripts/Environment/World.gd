@@ -6,6 +6,8 @@ onready var itemSlots = $itemSlots;
 
 onready var actionBtns = $actionBtns;
 onready var useBtn = load("res://scenes/Interactables/UseButton.tscn")
+onready var roomDialog_scene = load("res://scenes/Interactables/roomDialog.tscn")
+
 
 onready var mouseCurrentTarget = "";
 onready var dialogBoard = $dialogBoard;
@@ -58,7 +60,12 @@ func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
 		$roomLayer.get_child(0).queue_free()
 	var room = generalRoomScene.instance();
 	$roomLayer.add_child(room)
-	room.setRoom(newRoom, playerSpawn, playerFlipped)				
+	room.setRoom(newRoom, playerSpawn, playerFlipped)	
+	var roomDialog = roomDialog_scene.instance()
+	add_child(roomDialog)
+	roomDialog.play_roomDialog(newRoom)
+	
+				
 
 
 func loadRoom_cooldown():
