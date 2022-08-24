@@ -2,7 +2,7 @@ extends Node2D
 
 onready var dialogText : String = "";
 onready var dialogTextNode = $Control/colorRect/dialogText;
-export (float) var dialogTextDelay = 0.3;
+export (float) var dialogTextDelay = 0.05;
 
 
 

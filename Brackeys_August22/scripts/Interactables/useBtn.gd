@@ -29,17 +29,27 @@ func _on_Area2D_mouse_exited():
 
 func _on_mouseClicked():
 	if(furnitureData.furnitureType == "door"):
-		var spawnPt = worldNode.playerSpawnPt;
-		if(furnitureData.doorIsRight):
-			spawnPt.x = 50;
-		else:
-			spawnPt.x = 850
-		worldNode.loadNewRoom(furnitureData.doorRoom, spawnPt, worldNode.playerFlippedX)
+		doorClick_handler()
 	else:
-		if(len(furnitureData.dialogSet) > 0):
+		dialogSet_handler()
+		
+	
+func doorClick_handler():
+	if(!worldNode.roomHasLoaded):
+			worldNode.roomHasLoaded = true;
+			var spawnPt = worldNode.playerSpawnPt;
+			if(furnitureData.doorIsRight):
+				spawnPt.x = 50;
+			else:
+				spawnPt.x = 850
+			worldNode.loadNewRoom(furnitureData.doorRoom, spawnPt, worldNode.playerFlippedX)
+			worldNode.loadRoom_cooldown()	
+
+
+func dialogSet_handler():
+	if(len(furnitureData.dialogSet) > 0):
 			var dialogBox = dialogBox_scene.instance()
 			worldNode.dialogBoard.add_child(dialogBox)
 			worldNode.isDialogActive = true;
 			dialogBox.runTextDialog(furnitureData.dialogSet[worldNode.randomNumberGenerator(0, len(furnitureData.dialogSet))])
-	
 	

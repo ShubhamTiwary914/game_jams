@@ -1,18 +1,18 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/Items/Window_01.png" type="Texture" id=1]
+[ext_resource path="res://assets/Items/bulb_01.png" type="Texture" id=1]
 [ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
-furnitureName = "Window_01"
+furnitureName = "Bulb_01"
 furnitureSprite = ExtResource( 1 )
-spawnPosition = Vector2( 440, 200 )
-furnitureSize = Vector2( 5, 5 )
-dialogSet = [ "Bo bo bo", "Window!" ]
+spawnPosition = Vector2( 500, 35 )
+furnitureSize = Vector2( 4, 4 )
+dialogSet = [  ]
 furnitureType = "light"
-lightIntensity = 1.0
-lightRange = 4.4
+lightIntensity = 0.7
+lightRange = 4.0
 doorRoom = ""
 door_isLocked = false
 doorIsRight = false

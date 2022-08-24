@@ -12,7 +12,6 @@ font_data = ExtResource( 3 )
 
 [node name="dilogBox" type="Node2D"]
 script = ExtResource( 1 )
-dialogTextDelay = 0.15
 
 [node name="dialogFrame" type="Sprite" parent="."]
 position = Vector2( 392.564, 451.94 )

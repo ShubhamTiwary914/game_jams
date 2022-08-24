@@ -14,12 +14,13 @@ onready var isDialogActive = false;
 
 onready var playerSpawnPt;
 onready var playerFlippedX = false;
+onready var roomHasLoaded = false;
 
 
 func _ready():
 	var playerData = load("res://Store/playerData.tres")
 	playerSpawnPt = playerData.spawnPoint;
-	loadNewRoom("attic", playerSpawnPt, false)
+	loadNewRoom("hallway_03", playerSpawnPt, false)
 
 
 func randomNumberGenerator(start, end) -> int:
@@ -59,4 +60,8 @@ func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
 	$roomLayer.add_child(room)
 	room.setRoom(newRoom, playerSpawn, playerFlipped)				
 
+
+func loadRoom_cooldown():
+	yield(get_tree().create_timer(1), "timeout")
+	roomHasLoaded = false;
 	

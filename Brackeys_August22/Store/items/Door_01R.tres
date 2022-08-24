@@ -7,12 +7,12 @@
 script = ExtResource( 2 )
 furnitureName = "Door_01"
 furnitureSprite = ExtResource( 1 )
-spawnPosition = Vector2( 800, 300 )
+spawnPosition = Vector2( 110, 300 )
 furnitureSize = Vector2( 6, 8 )
 dialogSet = [  ]
 furnitureType = "door"
 lightIntensity = 0.0
 lightRange = 0.0
-doorRoom = "hallway_03"
+doorRoom = "attic"
 door_isLocked = false
-doorIsRight = true
+doorIsRight = false
