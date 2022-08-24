@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/Items/pussyPainting.png" type="Texture" id=1]
+[ext_resource path="res://assets/Items/Drawer_2.png" type="Texture" id=1]
 [ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
-furnitureName = "Pussy_Painting"
+furnitureName = "Drawer_02"
 furnitureSprite = ExtResource( 1 )
-spawnPosition = Vector2( 300, 300 )
-furnitureSize = Vector2( 2, 2 )
-dialogSet = [ "What an odd painting, is that supposed to be a crow?", "Looks like this was drawn by a five year old" ]
+spawnPosition = Vector2( 400, 350 )
+furnitureSize = Vector2( 5, 5 )
+dialogSet = [ "Somebody should clean up all this blood already", "What an awful looking paint above here, I want to puke already" ]
 furnitureType = ""
 lightIntensity = 0.0
 lightRange = 0.0
