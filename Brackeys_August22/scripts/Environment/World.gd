@@ -1,5 +1,7 @@
 extends Node2D
 
+export (String) var spawnRoom = "attic";
+
 onready var generalRoomScene = load("res://scenes/Rooms/GeneralRoom.tscn")
 onready var itemSlots = $itemSlots;
 
@@ -23,7 +25,7 @@ onready var currentRoomFloor : String;
 func _ready():
 	var playerData = load("res://Store/playerData.tres")
 	playerSpawnPt = playerData.spawnPoint;
-	loadNewRoom("kitchen", playerSpawnPt, false)
+	loadNewRoom(spawnRoom, playerSpawnPt, false)
 
 
 func randomNumberGenerator(start, end) -> int:
