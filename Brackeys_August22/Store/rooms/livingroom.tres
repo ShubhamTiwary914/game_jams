@@ -9,4 +9,4 @@ script = ExtResource( 2 )
 wallSprite = ExtResource( 3 )
 floorSprite = ExtResource( 1 )
 roomFloor = "1st"
-itemNames = [ "Door_07R" ]
+itemNames = [ "Door_07R", "Clock_0", "BrokenChair", "TV_0", "Window_02", "Drawer_03" ]
