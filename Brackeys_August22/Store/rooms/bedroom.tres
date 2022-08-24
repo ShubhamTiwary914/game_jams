@@ -8,5 +8,5 @@
 script = ExtResource( 2 )
 wallSprite = ExtResource( 3 )
 floorSprite = ExtResource( 1 )
-roomFloor = "3rd"
+roomFloor = "2nd"
 itemNames = [ "Door_02R", "Bed_01", "Drawer_02", "Ponchong_Painting" ]

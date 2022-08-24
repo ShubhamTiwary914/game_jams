@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/Items/Bed_01.png" type="Texture" id=1]
+[ext_resource path="res://assets/Items/KitchenDrawer_03.png" type="Texture" id=1]
 [ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
-furnitureName = "Bed_01"
+furnitureName = "KitchenDrawer_02"
 furnitureSprite = ExtResource( 1 )
-spawnPosition = Vector2( 700, 450 )
-furnitureSize = Vector2( 8, 6 )
-dialogSet = [ "I haven't slept in two nights, if only this place was'nt goddamn haunted.." ]
+spawnPosition = Vector2( 300, 120 )
+furnitureSize = Vector2( 5, 5 )
+dialogSet = [  ]
 furnitureType = ""
 lightIntensity = 0.0
 lightRange = 0.0

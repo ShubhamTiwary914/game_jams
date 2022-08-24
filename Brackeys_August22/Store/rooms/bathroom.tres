@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://assets/Environment/hallwayFloor_03.png" type="Texture" id=1]
+[ext_resource path="res://assets/Environment/TIledFloor_0.png" type="Texture" id=1]
 [ext_resource path="res://Resources/roomResource.gd" type="Script" id=2]
 [ext_resource path="res://assets/Environment/woodenWall_0.jpg" type="Texture" id=3]
 
@@ -8,5 +8,5 @@
 script = ExtResource( 2 )
 wallSprite = ExtResource( 3 )
 floorSprite = ExtResource( 1 )
-roomFloor = "2nd"
-itemNames = [ "Door_01R", "Bulb_01", "Pussy_Painting", "Door_02", "Door_03" ]
+roomFloor = "1st"
+itemNames = [ "Door_05R" ]

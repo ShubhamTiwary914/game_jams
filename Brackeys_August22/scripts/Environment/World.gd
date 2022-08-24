@@ -23,7 +23,7 @@ onready var currentRoomFloor : String;
 func _ready():
 	var playerData = load("res://Store/playerData.tres")
 	playerSpawnPt = playerData.spawnPoint;
-	loadNewRoom("hallway_02", playerSpawnPt, false)
+	loadNewRoom("kitchen", playerSpawnPt, false)
 
 
 func randomNumberGenerator(start, end) -> int:
