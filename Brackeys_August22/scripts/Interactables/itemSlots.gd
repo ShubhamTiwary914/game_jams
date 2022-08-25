@@ -18,6 +18,15 @@ func setItemSlot(slotNum, slotValue):
 	if(slotNum == 1):
 		slot1Value = slotValue;
 		slot1Sprite.texture = itemSprites[slotValue];
-	else:
-		pass
+		
+
+func setItemDurability(isVisible : bool, progressValue : float):
+	$itemDurability.visible = isVisible
+	$itemDurability.value = progressValue
+	
+	
+func setKeySlot(hasKey : bool):
+	$keySlot.visible = hasKey
+
+
 		

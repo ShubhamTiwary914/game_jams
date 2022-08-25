@@ -10,6 +10,7 @@ furnitureSprite = ExtResource( 1 )
 spawnPosition = Vector2( 400, 350 )
 furnitureSize = Vector2( 5, 5 )
 dialogSet = [ "Somebody should clean up all this blood already", "What an awful looking paint above here, I want to puke already" ]
+hasKey = true
 furnitureType = ""
 lightIntensity = 0.0
 lightRange = 0.0

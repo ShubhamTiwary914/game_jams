@@ -7,6 +7,7 @@ export (Image) var furnitureSprite;
 export (Vector2) var spawnPosition;
 export (Vector2) var furnitureSize;
 export (Array, String) var dialogSet; 
+export (bool) var hasKey = false;
 
 
 #light

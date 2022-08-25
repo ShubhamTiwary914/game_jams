@@ -10,3 +10,4 @@ wallSprite = ExtResource( 3 )
 floorSprite = ExtResource( 1 )
 roomFloor = "Ground"
 itemNames = [ "Door_06R", "Door_07", "Door_08" ]
+itemBlackList = [  ]

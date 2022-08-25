@@ -14,6 +14,7 @@ onready var worldNode = get_tree().root.get_child(0)
 
 func setRoom(roomKey, playerPos : Vector2, playerFlipped : bool):
 	var roomData = load("res://Store/rooms/" + roomKey + ".tres")
+	worldNode.currentRoom = roomKey
 	worldNode.currentRoomFloor = roomData.roomFloor
 	wallSprite.texture = roomData.wallSprite;
 	for floorChild in floorNode.get_children():
@@ -22,20 +23,27 @@ func setRoom(roomKey, playerPos : Vector2, playerFlipped : bool):
 	setPlayerSpawn(playerPos, playerFlipped)
 	
 	
+	
 func setFurnitures(roomData):
 	for itemName in roomData.itemNames:
-		var furnitureData = load("res://Store/items/" + itemName + ".tres")
-		var furniture = furnitureScene.instance()
-		furnitureHolder.add_child(furniture)
-		furniture.global_position = furnitureData.spawnPosition;
-		furniture.setSprite(furnitureData)
-		furnitureNodes.append(furniture)
+		if(!worldNode.itemBlackList.has(itemName)):
+			var furnitureData = load("res://Store/items/" + itemName + ".tres")
+			var furniture = furnitureScene.instance()
+			furnitureHolder.add_child(furniture)
+			furniture.global_position = furnitureData.spawnPosition;
+			furniture.setSprite(furnitureData)
+			furnitureNodes.append(furniture)
 		
 		
 func setPlayerSpawn(playerPos, isPlayerFlipped):
 	playerNode.global_position = playerPos
 	playerNode.playerAnimatonSprite.flip_h = isPlayerFlipped
 	
-	
+
+func destroyFurniture(furnitureName : String):
+	for furniture in furnitureNodes:
+		if(furniture.furnitureData.furnitureName == furnitureName):
+			worldNode.itemBlackList.append(furnitureName)
+			furniture.queue_free()
 	
 	

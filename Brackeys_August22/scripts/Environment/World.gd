@@ -17,9 +17,21 @@ onready var isDialogActive = false;
 
 
 onready var playerSpawnPt;
+onready var playerCurrentItem = "Default";
 onready var playerFlippedX = false;
+onready var playerHasCandle = true;
+onready var playerHasKey = false;
+
+onready var itemDurabilityVisible = false;
+onready var itemResetDurability = false;
+
 onready var roomHasLoaded = false;
 onready var currentRoomFloor : String;
+onready var currentRoom : String;
+onready var itemBlackList = [];
+onready var keyBlackList = []
+onready var unlockedDoors = []
+
 
 
 func _ready():
@@ -47,6 +59,7 @@ func destroyInteractive_button(furnitureName):
 			actionBtn.queue_free()
 
 
+
 func interactiveMouse_clicked():
 	for actionBtn in actionBtns.get_children():
 		if(actionBtn.furnitureData.furnitureName == mouseCurrentTarget):
@@ -56,6 +69,7 @@ func skipDialog():
 	if(isDialogActive):
 		dialogBoard.get_child(0).queue_free()
 		isDialogActive = false;
+	
 	
 
 func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
@@ -69,9 +83,10 @@ func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
 	roomDialog.play_roomDialog(newRoom, currentRoomFloor)
 	
 				
-
-
 func loadRoom_cooldown():
 	yield(get_tree().create_timer(1), "timeout")
 	roomHasLoaded = false;
 	
+
+func destroyFurniture(furnitureName):
+	$roomLayer.get_child(0).destroyFurniture(furnitureName)

@@ -30,16 +30,29 @@ func _on_Area2D_mouse_exited():
 func _on_mouseClicked():
 	if(furnitureData.furnitureType == "door"):
 		doorClick_handler()
+	elif(furnitureData.furnitureType == "candle"):
+		worldNode.destroyFurniture(furnitureData.furnitureName)
+		worldNode.itemResetDurability = true;
 	else:
-		if(len(furnitureData.dialogSet) > 0):
-			var dialogText = furnitureData.dialogSet[worldNode.randomNumberGenerator(0, len(furnitureData.dialogSet))]
-			dialogSet_handler(dialogText)
+		if(furnitureData.hasKey and !worldNode.keyBlackList.has(furnitureData.furnitureName) ):
+			keyHandler()
+		else:
+			if(len(furnitureData.dialogSet) > 0):
+				var dialogText = furnitureData.dialogSet[worldNode.randomNumberGenerator(0, len(furnitureData.dialogSet))]
+				dialogSet_handler(dialogText)
 		
 	
 func doorClick_handler():
-	if(furnitureData.door_isLocked):
-		dialogSet_handler("Door is Locked! Look for a key...")
-	else:
+	if(!worldNode.unlockedDoors.has(furnitureData.furnitureName)):
+		if(furnitureData.door_isLocked && !worldNode.playerHasKey):  #key not in hand
+			dialogSet_handler("Door is Locked! Look for a key...")
+		if(furnitureData.door_isLocked && worldNode.playerHasKey):  #key in hand(open)
+			dialogSet_handler("The Door has Opened!")
+			worldNode.unlockedDoors.append(furnitureData.furnitureName)
+			worldNode.playerHasKey = false;
+			worldNode.itemSlots.setKeySlot(false)
+			
+	if(!furnitureData.door_isLocked or worldNode.unlockedDoors.has(furnitureData.furnitureName)):  #door is open
 		if(!worldNode.roomHasLoaded):
 				worldNode.roomHasLoaded = true;
 				var spawnPt = worldNode.playerSpawnPt;
@@ -51,9 +64,17 @@ func doorClick_handler():
 				worldNode.loadRoom_cooldown()	
 
 
+
 func dialogSet_handler(dialogText):
 	var dialogBox = dialogBox_scene.instance()
 	worldNode.dialogBoard.add_child(dialogBox)
 	worldNode.isDialogActive = true;
 	dialogBox.runTextDialog(dialogText)
+	
+
+func keyHandler():
+	worldNode.playerHasKey = true
+	worldNode.itemSlots.setKeySlot(true)
+	dialogSet_handler("You found a Key!")
+	worldNode.keyBlackList.append(furnitureData.furnitureName)
 	

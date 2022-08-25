@@ -39,10 +39,12 @@ offset = Vector2( 1220.79, -34.4329 )
 [node name="Furnitures" type="Node2D" parent="."]
 
 [node name="Entities" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Player" parent="Entities" instance=ExtResource( 2 )]
 
 [node name="EndBoundColliders" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="WallEnd" type="StaticBody2D" parent="EndBoundColliders"]
 editor/display_folded = true

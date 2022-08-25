@@ -12,7 +12,7 @@ onready var playerAnimatonSprite = $playerAnimation;
 
 #Default = Magnifying_Glass
 onready var itemSwapPressed = false;
-onready var itemHeld = "Default";
+#onready var itemHeld = "Default";
 onready var furnitureInteractable = "";
 
 
@@ -23,6 +23,7 @@ onready var mouseHasClicked = false;
 func _ready():
 	player.position = playerData.spawnPoint;
 	itemSlots = worldNode.itemSlots;
+	enableLighting()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,34 +48,31 @@ func playerSpriteFlip(playerVelocity : Vector2):
 	if (playerVelocity.x > 0):
 		playerAnimatonSprite.flip_h = false;
 
+
 func playerhandleAnimations(playerVel : Vector2):
 	if !(playerVel.x == 0 and playerVel.y == 0):
-		playerAnimatonSprite.play("Walk" + itemHeld)
+		playerAnimatonSprite.play("Walk" + worldNode.playerCurrentItem)
 	else:
-		playerAnimatonSprite.play("Idle" + itemHeld)
+		playerAnimatonSprite.play("Idle" + worldNode.playerCurrentItem)
  
 
 
     #   ------    ITEMS  SECTION   ------
 func playerHandle_heldItem():
 	if(Input.is_action_pressed("slot1")):
-		var slot1Sprite = worldNode.itemSlots.slot1Sprite;
-		swapItems(1, slot1Sprite)
-	if(Input.is_action_pressed("slot2")):
-		var slot2Sprite = worldNode.itemSlots.slot1Sprite;
-		swapItems(2, slot2Sprite)
+		if(worldNode.playerHasCandle):
+			var slot1Sprite = worldNode.itemSlots.slot1Sprite;
+			swapItems(1, slot1Sprite)	
+		
 		
 func swapItems(slotPressed, spriteNode):
 	if(!itemSwapPressed):
-		var Holder = itemHeld
+		var Holder = worldNode.playerCurrentItem
 		if(slotPressed == 1):
 			if(worldNode.itemSlots.slot1Value != ""):
-				itemHeld = worldNode.itemSlots.slot1Value
+				worldNode.playerCurrentItem = worldNode.itemSlots.slot1Value
+				$itemDurability.playerChangedItems()
 				worldNode.itemSlots.setItemSlot(1, Holder)
-		if(slotPressed == 2):
-			if(worldNode.itemSlots.slot2Value != ""):
-				itemHeld = worldNode.itemSlots.slot2Value
-				worldNode.itemSlots.setItemSlot(2, Holder)
 		itemSwapPressed = true;
 		enableLighting()
 		swapItem_cooldown()
@@ -86,10 +84,14 @@ func swapItem_cooldown():
 	
 	
 func enableLighting():
-	if(itemHeld == "Candle"):
-		$CandleLight.enabled = true;
+	if(worldNode.playerHasCandle):
+		if(worldNode.playerCurrentItem == "Candle"):
+			$CandleLight.enabled = true;
+		else:
+			$CandleLight.enabled = false;
 	else:
 		$CandleLight.enabled = false;
+		
 
 
   #   ------    INTERACTABLES  SECTION   ------
