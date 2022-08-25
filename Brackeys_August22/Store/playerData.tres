@@ -9,3 +9,5 @@ spawnPoint = Vector2( 400, 450 )
 mouseClick_cooldown = 1.0
 itemSwap_cooldown = 1.0
 candleDurability = 100.0
+playerHitTimer = 0.0
+playerHitDuration = 3.0

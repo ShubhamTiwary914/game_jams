@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Environment/World.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Interactables/itemSlots.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Entities/ghost.tscn" type="PackedScene" id=3]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,3 +16,6 @@ position = Vector2( -8.35095, 8.35094 )
 [node name="actionBtns" type="Node2D" parent="."]
 
 [node name="dialogBoard" type="Node2D" parent="."]
+
+[node name="ghost" parent="." instance=ExtResource( 3 )]
+position = Vector2( 141.074, 216.702 )

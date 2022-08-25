@@ -10,21 +10,25 @@ onready var actionBtns = $actionBtns;
 onready var useBtn = load("res://scenes/Interactables/UseButton.tscn")
 onready var roomDialog_scene = load("res://scenes/Interactables/roomDialog.tscn")
 
-
+#UI
 onready var mouseCurrentTarget = "";
 onready var dialogBoard = $dialogBoard;
 onready var isDialogActive = false;
 
-
+#Player
 onready var playerSpawnPt;
+onready var playerCurrentPosition = Vector2.ZERO;
 onready var playerCurrentItem = "Default";
 onready var playerFlippedX = false;
 onready var playerHasCandle = true;
 onready var playerHasKey = false;
+onready var playerHp = 3;
 
+#Items
 onready var itemDurabilityVisible = false;
 onready var itemResetDurability = false;
 
+#Rooms / Keys
 onready var roomHasLoaded = false;
 onready var currentRoomFloor : String;
 onready var currentRoom : String;

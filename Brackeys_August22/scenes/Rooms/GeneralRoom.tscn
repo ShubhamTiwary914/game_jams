@@ -44,15 +44,13 @@ editor/display_folded = true
 [node name="Player" parent="Entities" instance=ExtResource( 2 )]
 
 [node name="EndBoundColliders" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="WallEnd" type="StaticBody2D" parent="EndBoundColliders"]
-editor/display_folded = true
 position = Vector2( 124.058, 377.266 )
 scale = Vector2( 20, 1 )
 
 [node name="WallCollider" type="CollisionShape2D" parent="EndBoundColliders/WallEnd"]
-position = Vector2( 15.5318, -111.273 )
+position = Vector2( 15.3773, -132.909 )
 shape = SubResource( 1 )
 
 [node name="LeftEdgeEnd" type="StaticBody2D" parent="EndBoundColliders"]

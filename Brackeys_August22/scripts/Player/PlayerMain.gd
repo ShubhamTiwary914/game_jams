@@ -17,6 +17,7 @@ onready var furnitureInteractable = "";
 
 
 onready var mouseHasClicked = false;
+onready var playerIsHit = false;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,9 +33,10 @@ func _process(delta):
 	playerVelocity.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * playerData.speed;
 	playerVelocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * playerData.speed;
 	playerVelocity = move_and_slide(playerVelocity)
+	worldNode.playerCurrentPosition = global_position;
 	playerSpriteFlip(playerVelocity)
 	playerHandle_heldItem()
-	playerhandleAnimations(playerVelocity)
+	playerhandleAnimations(playerVelocity, delta)
 	mouseClickHandler()
 	dialogClick_handler()
 	
@@ -49,12 +51,21 @@ func playerSpriteFlip(playerVelocity : Vector2):
 		playerAnimatonSprite.flip_h = false;
 
 
-func playerhandleAnimations(playerVel : Vector2):
-	if !(playerVel.x == 0 and playerVel.y == 0):
-		playerAnimatonSprite.play("Walk" + worldNode.playerCurrentItem)
+
+func playerhandleAnimations(playerVel : Vector2, delta):
+	if(!playerIsHit):
+		if !(playerVel.x == 0 and playerVel.y == 0):
+			playerAnimatonSprite.play("Walk" + worldNode.playerCurrentItem)
+		else:
+			playerAnimatonSprite.play("Idle" + worldNode.playerCurrentItem)
 	else:
-		playerAnimatonSprite.play("Idle" + worldNode.playerCurrentItem)
+		playerData.playerHitTimer -= delta
+		playerAnimatonSprite.play("Hit")
+		if(playerData.playerHitTimer <= playerData.playerHitDuration):
+			playerIsHit = false;
+		
  
+
 
 
     #   ------    ITEMS  SECTION   ------
@@ -92,6 +103,8 @@ func enableLighting():
 	else:
 		$CandleLight.enabled = false;
 		
+
+
 
 
   #   ------    INTERACTABLES  SECTION   ------
