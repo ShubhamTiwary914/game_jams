@@ -32,8 +32,9 @@ func randomNumberGenerator(start, end) -> int:
 	
 
 func _physics_process(delta):
-	ghostTravel()
-	ghostChasePlayer()
+	if(!worldNode.isDialogActive):
+		ghostTravel()
+		ghostChasePlayer()
 
 
 func ghostTravel():

@@ -8,10 +8,17 @@ onready var furnitureHolder = $Furnitures;
 onready var furnitureScene = load("res://scenes/Items/Furnitures.tscn")
 onready var furnitureNodes = [];
 
-onready var playerNode = $Entities/Player
+
 onready var worldNode = get_tree().root.get_child(0)
+onready var playerNode = $Entities/Player
+onready var ghostScene = load("res://scenes/Entities/ghost.tscn")
+onready var ghostSpawnPoints = [Vector2(100,100), Vector2(800, 100), Vector2(400, 100)]
 
 
+
+
+
+#     ----- FURNITURES + ROOM  SPAWN ------------
 func setRoom(roomKey, playerPos : Vector2, playerFlipped : bool):
 	var roomData = load("res://Store/rooms/" + roomKey + ".tres")
 	worldNode.currentRoom = roomKey
@@ -21,7 +28,6 @@ func setRoom(roomKey, playerPos : Vector2, playerFlipped : bool):
 		floorChild.texture = roomData.floorSprite;
 	setFurnitures(roomData)
 	setPlayerSpawn(playerPos, playerFlipped)
-	
 	
 	
 func setFurnitures(roomData):
@@ -34,16 +40,33 @@ func setFurnitures(roomData):
 			furniture.setSprite(furnitureData)
 			furnitureNodes.append(furniture)
 		
-		
-func setPlayerSpawn(playerPos, isPlayerFlipped):
-	playerNode.global_position = playerPos
-	playerNode.playerAnimatonSprite.flip_h = isPlayerFlipped
 	
-
 func destroyFurniture(furnitureName : String):
 	for furniture in furnitureNodes:
 		if(furniture.furnitureData.furnitureName == furnitureName):
 			worldNode.itemBlackList.append(furnitureName)
 			furniture.queue_free()
+	
+	
+
+#    ------------- ENTITIES SPAWN   ----------------
+	
+func setPlayerSpawn(playerPos, isPlayerFlipped):
+	playerNode.global_position = playerPos
+	playerNode.playerAnimatonSprite.flip_h = isPlayerFlipped
+	
+
+	
+func _on_ghostSpawner_timeout():
+	var spawnProbability = worldNode.randomNumberGenerator(0, 4)
+	if(!worldNode.isDialogActive):
+		if(spawnProbability == 0):
+			if($Ghosts.get_child_count() < worldNode.maxGhostCount):
+				var ghost = ghostScene.instance()
+				ghost.global_position = ghostSpawnPoints[worldNode.randomNumberGenerator(0, len(ghostSpawnPoints))]
+				$Ghosts.add_child(ghost)
+	
+	
+	
 	
 	

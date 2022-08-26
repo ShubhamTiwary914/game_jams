@@ -13,4 +13,5 @@ export (float) var itemSwap_cooldown = 1;
 export (float) var candleDurability = 100;
 export (float) var playerHitTimer = 0;
 export (float) var playerHitDuration = 3;
+export (int) var playerMaxHp = 3;
  

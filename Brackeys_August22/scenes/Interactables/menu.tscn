@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Interactables/menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/menuBoard.png" type="Texture" id=2]
+[ext_resource path="res://assets/Fonts/Silkscreen-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/UI/selectionKnife.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[node name="mainMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="menuBoard" type="Sprite" parent="."]
+position = Vector2( 515.964, 297.127 )
+scale = Vector2( 23.8204, 20.3575 )
+texture = ExtResource( 2 )
+
+[node name="SelectionList" type="Node2D" parent="."]
+
+[node name="item_1" type="Node2D" parent="SelectionList"]
+editor/display_folded = true
+position = Vector2( 350, 150 )
+
+[node name="label_1" type="Label" parent="SelectionList/item_1"]
+margin_right = 322.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "Start Game"
+
+[node name="item_2" type="Node2D" parent="SelectionList"]
+editor/display_folded = true
+position = Vector2( 350, 250 )
+
+[node name="label_2" type="Label" parent="SelectionList/item_2"]
+margin_right = 322.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "Controls"
+
+[node name="item_3" type="Node2D" parent="SelectionList"]
+editor/display_folded = true
+position = Vector2( 350, 350 )
+
+[node name="label_3" type="Label" parent="SelectionList/item_3"]
+margin_right = 322.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+
+[node name="cursor" type="Sprite" parent="."]
+position = Vector2( 267.229, 151.195 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="ControlsNote" type="Label" parent="."]
+visible = false
+margin_left = 37.4514
+margin_top = 68.7581
+margin_right = 988.451
+margin_bottom = 611.758
+custom_fonts/font = SubResource( 2 )
+text = "    Use W, A, S, D keys to move
+	
+	    interact with object by clicking on them
+		    using the left mouse, toggle items pressing 1
+	
+	
+	    Objectives:
+		       You are a detective investigating a 
+			       haunted mansion, look for a way out 
+				       of this mess!
+					                                            go back (x)
+				       
+					       "

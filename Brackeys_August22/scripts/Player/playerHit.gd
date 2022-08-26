@@ -4,6 +4,8 @@ extends "res://scripts/Player/PlayerMain.gd"
 onready var hpEmpty = load("res://assets/UI/HeartUIEmpty.png")
 
 
+func _ready():
+	setHealthSprites()
 
 
 func _on_playerHitbox_body_entered(body):
@@ -14,15 +16,23 @@ func _on_playerHitbox_body_entered(body):
 		playerIsHit = true
 		reducePlayerHp()
 		
+
+func setHealthSprites():
+	for healthIndex in range(0, playerData.playerMaxHp):
+		if( healthIndex >= worldNode.playerHp ):
+			$health.get_child(healthIndex).texture = hpEmpty;
 		
 
 func reducePlayerHp():
 	worldNode.playerHp -= 1;
-	$health.get_child(worldNode.playerHp).texture = hpEmpty;
+	if(worldNode.playerHp > 0):
+		$health.get_child(worldNode.playerHp).texture = hpEmpty;
+	else:
+		playerDies()
 	
 
 func playerDies():
-	pass
+	print("you died!")
 		 
 		
 		

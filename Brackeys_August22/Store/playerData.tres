@@ -11,3 +11,4 @@ itemSwap_cooldown = 1.0
 candleDurability = 100.0
 playerHitTimer = 0.0
 playerHitDuration = 3.0
+playerMaxHp = 3

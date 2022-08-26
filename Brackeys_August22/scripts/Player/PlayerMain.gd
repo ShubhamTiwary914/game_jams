@@ -30,9 +30,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var playerVelocity = Vector2(0,0)
-	playerVelocity.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * playerData.speed;
-	playerVelocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * playerData.speed;
-	playerVelocity = move_and_slide(playerVelocity)
+	if(!worldNode.isDialogActive):
+		playerVelocity.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * playerData.speed;
+		playerVelocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * playerData.speed;
+		playerVelocity = move_and_slide(playerVelocity)
 	worldNode.playerCurrentPosition = global_position;
 	playerSpriteFlip(playerVelocity)
 	playerHandle_heldItem()

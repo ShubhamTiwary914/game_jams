@@ -43,7 +43,10 @@ editor/display_folded = true
 
 [node name="Player" parent="Entities" instance=ExtResource( 2 )]
 
+[node name="Ghosts" type="Node2D" parent="."]
+
 [node name="EndBoundColliders" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="WallEnd" type="StaticBody2D" parent="EndBoundColliders"]
 position = Vector2( 124.058, 377.266 )
@@ -81,3 +84,7 @@ scale = Vector2( 20, 1 )
 [node name="BotCollider" type="CollisionShape2D" parent="EndBoundColliders/BottomEnd"]
 position = Vector2( 15.1617, -26.1444 )
 shape = SubResource( 1 )
+
+[node name="ghostSpawner" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="ghostSpawner" to="." method="_on_ghostSpawner_timeout"]

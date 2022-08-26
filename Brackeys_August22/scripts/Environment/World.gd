@@ -2,6 +2,7 @@ extends Node2D
 
 export (String) var spawnRoom = "attic";
 
+onready var menuScene = load("res://scenes/Interactables/menu.tscn")
 onready var generalRoomScene = load("res://scenes/Rooms/GeneralRoom.tscn")
 onready var itemSlots = $itemSlots;
 
@@ -11,11 +12,12 @@ onready var useBtn = load("res://scenes/Interactables/UseButton.tscn")
 onready var roomDialog_scene = load("res://scenes/Interactables/roomDialog.tscn")
 
 #UI
+onready var gameControlsNode = $gameControls;
 onready var mouseCurrentTarget = "";
 onready var dialogBoard = $dialogBoard;
 onready var isDialogActive = false;
 
-#Player
+#Player 
 onready var playerSpawnPt;
 onready var playerCurrentPosition = Vector2.ZERO;
 onready var playerCurrentItem = "Default";
@@ -23,6 +25,9 @@ onready var playerFlippedX = false;
 onready var playerHasCandle = true;
 onready var playerHasKey = false;
 onready var playerHp = 3;
+
+#Ghost
+onready var maxGhostCount = 1;
 
 #Items
 onready var itemDurabilityVisible = false;
@@ -39,16 +44,18 @@ onready var unlockedDoors = []
 
 
 func _ready():
-	var playerData = load("res://Store/playerData.tres")
-	playerSpawnPt = playerData.spawnPoint;
-	loadNewRoom(spawnRoom, playerSpawnPt, false)
+	gameControlsNode.loadGame_startMenu()
+	pass
 
+
+	
 
 func randomNumberGenerator(start, end) -> int:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = int(rng.randf_range(start, end))
 	return my_random_number
+
 
 
  #   ------    INTERACTABLES  MANAGING  SECTION   ------
@@ -74,7 +81,6 @@ func skipDialog():
 		dialogBoard.get_child(0).queue_free()
 		isDialogActive = false;
 	
-	
 
 func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
 	if($roomLayer.get_child_count() != 0):
@@ -94,3 +100,8 @@ func loadRoom_cooldown():
 
 func destroyFurniture(furnitureName):
 	$roomLayer.get_child(0).destroyFurniture(furnitureName)
+
+
+func _on_raiseGhostCount_timer():
+	maxGhostCount += 1;
+
