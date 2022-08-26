@@ -16,6 +16,8 @@ onready var gameControlsNode = $gameControls;
 onready var mouseCurrentTarget = "";
 onready var dialogBoard = $dialogBoard;
 onready var isDialogActive = false;
+onready var playerhasDied = false;
+
 
 #Player 
 onready var playerSpawnPt;
@@ -45,10 +47,7 @@ onready var unlockedDoors = []
 
 func _ready():
 	gameControlsNode.loadGame_startMenu()
-	pass
 
-
-	
 
 func randomNumberGenerator(start, end) -> int:
 	var rng = RandomNumberGenerator.new()
@@ -77,9 +76,10 @@ func interactiveMouse_clicked():
 			actionBtn._on_mouseClicked();
 
 func skipDialog():
-	if(isDialogActive):
-		dialogBoard.get_child(0).queue_free()
-		isDialogActive = false;
+	if(!playerhasDied):
+		if(isDialogActive):
+			dialogBoard.get_child(0).queue_free()
+			isDialogActive = false;
 	
 
 func loadNewRoom(newRoom : String, playerSpawn, playerFlipped):
@@ -104,4 +104,15 @@ func destroyFurniture(furnitureName):
 
 func _on_raiseGhostCount_timer():
 	maxGhostCount += 1;
+
+
+func restartGameMenu():
+	isDialogActive = true
+	playerCurrentItem = "Default"
+	var menuBoard = menuScene.instance()
+	add_child(menuBoard)
+	menuBoard.setDeathview()
+	
+	
+	
 

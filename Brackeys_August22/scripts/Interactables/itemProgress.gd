@@ -10,8 +10,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	reduceCandle_durability(delta)
-	resetCandleDurability()
+	if(!worldNode.isDialogActive):
+		reduceCandle_durability(delta)
+		resetCandleDurability()
 	
 	
 func playerChangedItems():

@@ -32,7 +32,9 @@ func reducePlayerHp():
 	
 
 func playerDies():
-	print("you died!")
+	worldNode.playerhasDied = true
+	worldNode.restartGameMenu()
+	
 		 
 		
 		

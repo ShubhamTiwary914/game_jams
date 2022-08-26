@@ -15,6 +15,9 @@ font_data = ExtResource( 3 )
 
 [node name="mainMenu" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="menuBoard" type="Sprite" parent="."]
 position = Vector2( 515.964, 297.127 )
@@ -22,6 +25,7 @@ scale = Vector2( 23.8204, 20.3575 )
 texture = ExtResource( 2 )
 
 [node name="SelectionList" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="item_1" type="Node2D" parent="SelectionList"]
 editor/display_folded = true
@@ -79,3 +83,19 @@ text = "    Use W, A, S, D keys to move
 					                                            go back (x)
 				       
 					       "
+
+[node name="deathNote" type="Label" parent="."]
+visible = false
+margin_left = 317.0
+margin_top = 197.0
+margin_right = 607.0
+margin_bottom = 534.0
+custom_fonts/font = SubResource( 2 )
+text = "You Died!
+
+
+
+           restart(x)
+
+
+"

@@ -7,26 +7,26 @@
 [ext_resource path="res://assets/Character/playerWalkCandle3.png" type="Texture" id=5]
 [ext_resource path="res://assets/Character/playerWalkCandle4.png" type="Texture" id=6]
 [ext_resource path="res://assets/Character/playerWalkCandle5.png" type="Texture" id=7]
-[ext_resource path="res://assets/Character/playerIdleCandle1.png" type="Texture" id=8]
-[ext_resource path="res://assets/Character/playerIdleCandle2.png" type="Texture" id=9]
-[ext_resource path="res://assets/Character/playerIdleCandle3.png" type="Texture" id=10]
-[ext_resource path="res://assets/Character/playerIdleCandle4.png" type="Texture" id=11]
-[ext_resource path="res://assets/Character/playerIdleCandle5.png" type="Texture" id=12]
-[ext_resource path="res://assets/Character/playerIdle1.png" type="Texture" id=13]
-[ext_resource path="res://assets/Character/playerIdle2.png" type="Texture" id=14]
-[ext_resource path="res://assets/Character/playerIdle3.png" type="Texture" id=15]
-[ext_resource path="res://assets/Character/playerIdle4.png" type="Texture" id=16]
-[ext_resource path="res://assets/Character/playerIdle5.png" type="Texture" id=17]
-[ext_resource path="res://assets/Character/playerWalk1.png" type="Texture" id=18]
-[ext_resource path="res://assets/Character/playerWalk2.png" type="Texture" id=19]
-[ext_resource path="res://assets/Character/playerWalk3.png" type="Texture" id=20]
-[ext_resource path="res://assets/Character/playerWalk4.png" type="Texture" id=21]
-[ext_resource path="res://assets/Character/playerWalk5.png" type="Texture" id=22]
-[ext_resource path="res://assets/Character/playerHit2.png" type="Texture" id=23]
-[ext_resource path="res://assets/Character/playerHit1.png" type="Texture" id=24]
-[ext_resource path="res://assets/Character/playerHit3.png" type="Texture" id=25]
-[ext_resource path="res://assets/Character/playerHit4.png" type="Texture" id=26]
-[ext_resource path="res://assets/Character/playerHit5.png" type="Texture" id=27]
+[ext_resource path="res://assets/Character/playerWalk1.png" type="Texture" id=8]
+[ext_resource path="res://assets/Character/playerWalk2.png" type="Texture" id=9]
+[ext_resource path="res://assets/Character/playerWalk3.png" type="Texture" id=10]
+[ext_resource path="res://assets/Character/playerWalk4.png" type="Texture" id=11]
+[ext_resource path="res://assets/Character/playerWalk5.png" type="Texture" id=12]
+[ext_resource path="res://assets/Character/playerIdleCandle1.png" type="Texture" id=13]
+[ext_resource path="res://assets/Character/playerIdleCandle2.png" type="Texture" id=14]
+[ext_resource path="res://assets/Character/playerIdleCandle3.png" type="Texture" id=15]
+[ext_resource path="res://assets/Character/playerIdleCandle4.png" type="Texture" id=16]
+[ext_resource path="res://assets/Character/playerIdleCandle5.png" type="Texture" id=17]
+[ext_resource path="res://assets/Character/playerHit2.png" type="Texture" id=18]
+[ext_resource path="res://assets/Character/playerHit1.png" type="Texture" id=19]
+[ext_resource path="res://assets/Character/playerHit3.png" type="Texture" id=20]
+[ext_resource path="res://assets/Character/playerHit4.png" type="Texture" id=21]
+[ext_resource path="res://assets/Character/playerHit5.png" type="Texture" id=22]
+[ext_resource path="res://assets/Character/playerIdle1.png" type="Texture" id=23]
+[ext_resource path="res://assets/Character/playerIdle2.png" type="Texture" id=24]
+[ext_resource path="res://assets/Character/playerIdle3.png" type="Texture" id=25]
+[ext_resource path="res://assets/Character/playerIdle4.png" type="Texture" id=26]
+[ext_resource path="res://assets/Character/playerIdle5.png" type="Texture" id=27]
 [ext_resource path="res://assets/UI/barBackground.png" type="Texture" id=28]
 [ext_resource path="res://assets/UI/progressBar.png" type="Texture" id=29]
 [ext_resource path="res://scripts/Interactables/itemProgress.gd" type="Script" id=30]
@@ -45,23 +45,23 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "IdleCandle",
-"speed": 10.0
+"name": "WalkDefault",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "IdleDefault",
+"name": "IdleCandle",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "WalkDefault",
-"speed": 8.0
+"name": "Hit",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": true,
-"name": "Hit",
-"speed": 5.0
+"name": "IdleDefault",
+"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]

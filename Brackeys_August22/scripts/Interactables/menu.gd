@@ -12,7 +12,7 @@ onready var cursorinCooldown = false;
 
 onready var inControlsView = false;
 
-
+onready var inDeathView = false;
 
 func _ready():
 	if(mode == "end"):
@@ -27,7 +27,7 @@ func _physics_process(delta):
 	
 #in menu
 func controlsInput():
-	if(!inControlsView):
+	if(!inControlsView and !inDeathView):
 		if(Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W)):	
 			if(!cursorinCooldown):
 				currentItem -= 1
@@ -41,8 +41,10 @@ func controlsInput():
 		if(currentItem >= 2): currentItem = 2
 		if(currentItem <= 0): currentItem = 0
 		$cursor.global_position.y = $SelectionList.get_child(currentItem).global_position.y + 30
-	else:
+	if(inControlsView and !inDeathView):
 		controlsView()
+	if(inDeathView):
+		deathView()
 
 
 
@@ -64,6 +66,15 @@ func onEnterPressed():
 			"Exit":
 				exitGame()
 	
+func setDeathview():
+	$ControlsNote.visible = false;
+	$SelectionList.visible = false;
+	$cursor.visible = false
+	$deathNote.visible = true;
+	inControlsView = false;
+	inDeathView = true;
+	
+
 
 #viewing game Controls
 func controlsView():
@@ -72,7 +83,13 @@ func controlsView():
 		$ControlsNote.visible = false;
 		$SelectionList.visible = true;
 		$cursor.visible = true;
+		$deathNote.visible = false;
 		
+
+func deathView():
+	if(Input.is_key_pressed(KEY_X)):
+		get_tree().reload_current_scene()
+
 
 #exit game
 func exitGame():

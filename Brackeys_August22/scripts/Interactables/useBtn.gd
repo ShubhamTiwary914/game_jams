@@ -72,6 +72,8 @@ func dialogSet_handler(dialogText):
 	dialogBox.runTextDialog(dialogText)
 	
 
+	
+
 func keyHandler():
 	worldNode.playerHasKey = true
 	worldNode.itemSlots.setKeySlot(true)
