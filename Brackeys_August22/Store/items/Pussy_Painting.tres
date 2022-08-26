@@ -10,6 +10,7 @@ furnitureSprite = ExtResource( 1 )
 spawnPosition = Vector2( 300, 300 )
 furnitureSize = Vector2( 2, 2 )
 dialogSet = [ "What an odd painting, is that supposed to be a crow?", "Looks like this was drawn by a five year old" ]
+hasKey = false
 furnitureType = ""
 lightIntensity = 0.0
 lightRange = 0.0

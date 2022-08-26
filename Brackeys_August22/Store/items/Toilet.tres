@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/Items/BrokenChair.png" type="Texture" id=1]
+[ext_resource path="res://assets/Items/Toilet.png" type="Texture" id=1]
 [ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
-furnitureName = "BrokenChair"
+furnitureName = "Toilet"
 furnitureSprite = ExtResource( 1 )
-spawnPosition = Vector2( 600, 400 )
+spawnPosition = Vector2( 550, 350 )
 furnitureSize = Vector2( 4, 4 )
-dialogSet = [ "This chair surely has seen some tough times..", "It feels like this place has been untouched for decades" ]
+dialogSet = [ "*Takes a piss*, man that felt great! had been carrying that around the whole day", "This is the cleanest toilet i've seen, ironically in a century old abandoned house" ]
 hasKey = false
 furnitureType = ""
 lightIntensity = 0.0

@@ -47,6 +47,8 @@ func doorClick_handler():
 		if(furnitureData.door_isLocked && !worldNode.playerHasKey):  #key not in hand
 			dialogSet_handler("Door is Locked! Look for a key...")
 		if(furnitureData.door_isLocked && worldNode.playerHasKey):  #key in hand(open)
+			if(furnitureData.furnitureName == "DoorFinal"):
+				worldNode.restartGameMenu(true)
 			dialogSet_handler("The Door has Opened!")
 			worldNode.unlockedDoors.append(furnitureData.furnitureName)
 			worldNode.playerHasKey = false;

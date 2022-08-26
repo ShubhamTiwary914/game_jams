@@ -15,5 +15,5 @@ furnitureType = "door"
 lightIntensity = 0.0
 lightRange = 0.0
 doorRoom = "hallway_01"
-door_isLocked = false
+door_isLocked = true
 doorIsRight = true

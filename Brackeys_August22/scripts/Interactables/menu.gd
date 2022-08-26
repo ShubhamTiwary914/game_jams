@@ -66,13 +66,15 @@ func onEnterPressed():
 			"Exit":
 				exitGame()
 	
-func setDeathview():
+func setDeathview(endText = "You Died!"):
+	var deathText = endText + "\n\n\n\n\n           Restart(X)"
 	$ControlsNote.visible = false;
 	$SelectionList.visible = false;
 	$cursor.visible = false
 	$deathNote.visible = true;
 	inControlsView = false;
 	inDeathView = true;
+	$deathNote.text = deathText
 	
 
 

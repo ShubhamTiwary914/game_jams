@@ -1,19 +1,19 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/Items/Upstairs.png" type="Texture" id=1]
+[ext_resource path="res://assets/Items/DoorLocked.png" type="Texture" id=1]
 [ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
-furnitureName = "Door_06R"
+furnitureName = "DoorFinal"
 furnitureSprite = ExtResource( 1 )
-spawnPosition = Vector2( 120, 300 )
+spawnPosition = Vector2( 100, 300 )
 furnitureSize = Vector2( 6, 8 )
 dialogSet = [  ]
 hasKey = false
 furnitureType = "door"
 lightIntensity = 0.0
 lightRange = 0.0
-doorRoom = "hallway_02"
-door_isLocked = false
-doorIsRight = true
+doorRoom = "basement"
+door_isLocked = true
+doorIsRight = false

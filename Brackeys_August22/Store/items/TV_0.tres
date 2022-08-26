@@ -10,6 +10,7 @@ furnitureSprite = ExtResource( 1 )
 spawnPosition = Vector2( 300, 200 )
 furnitureSize = Vector2( 4, 4 )
 dialogSet = [  ]
+hasKey = true
 furnitureType = "light"
 lightIntensity = 0.6
 lightRange = 3.5

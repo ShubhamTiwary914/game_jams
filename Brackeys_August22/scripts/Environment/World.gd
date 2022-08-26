@@ -106,12 +106,16 @@ func _on_raiseGhostCount_timer():
 	maxGhostCount += 1;
 
 
-func restartGameMenu():
+func restartGameMenu(completeEnd = false):
+	playerhasDied = true;
 	isDialogActive = true
 	playerCurrentItem = "Default"
 	var menuBoard = menuScene.instance()
 	add_child(menuBoard)
-	menuBoard.setDeathview()
+	if(!completeEnd):
+		menuBoard.setDeathview("You Died!")
+	else:
+		menuBoard.setDeathview("Game Over!")
 	
 	
 	

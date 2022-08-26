@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 furnitureName = "Candle_0"
 furnitureSprite = ExtResource( 1 )
-spawnPosition = Vector2( 600, 350 )
+spawnPosition = Vector2( 120, 250 )
 furnitureSize = Vector2( 2, 2 )
 dialogSet = [  ]
 hasKey = false
