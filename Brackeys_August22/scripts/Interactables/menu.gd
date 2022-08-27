@@ -33,11 +33,13 @@ func controlsInput():
 				currentItem -= 1
 				cursorinCooldown = true
 				cursorCoolDownTimer()
+				worldNode.playSound("buttonClick")
 		elif(Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S)):
 			if(!cursorinCooldown):
 				currentItem += 1
 				cursorinCooldown = true
 				cursorCoolDownTimer()
+				worldNode.playSound("buttonClick")
 		if(currentItem >= 2): currentItem = 2
 		if(currentItem <= 0): currentItem = 0
 		$cursor.global_position.y = $SelectionList.get_child(currentItem).global_position.y + 30
@@ -81,6 +83,7 @@ func setDeathview(endText = "You Died!"):
 #viewing game Controls
 func controlsView():
 	if(Input.is_key_pressed(KEY_X)):
+		worldNode.playSound("buttonClick")
 		inControlsView = false
 		$ControlsNote.visible = false;
 		$SelectionList.visible = true;

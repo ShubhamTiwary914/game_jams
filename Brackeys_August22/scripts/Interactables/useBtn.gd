@@ -34,6 +34,7 @@ func _on_mouseClicked():
 		worldNode.destroyFurniture(furnitureData.furnitureName)
 		worldNode.itemResetDurability = true;
 	else:
+		worldNode.playSound("buttonClick")
 		if(furnitureData.hasKey and !worldNode.keyBlackList.has(furnitureData.furnitureName) ):
 			keyHandler()
 		else:
@@ -57,6 +58,7 @@ func doorClick_handler():
 	if(!furnitureData.door_isLocked or worldNode.unlockedDoors.has(furnitureData.furnitureName)):  #door is open
 		if(!worldNode.roomHasLoaded):
 				worldNode.roomHasLoaded = true;
+				worldNode.playSound("woodDoorOpen")
 				var spawnPt = worldNode.playerSpawnPt;
 				if(furnitureData.doorIsRight):
 					spawnPt.x = 50;
@@ -78,6 +80,7 @@ func dialogSet_handler(dialogText):
 
 func keyHandler():
 	worldNode.playerHasKey = true
+	worldNode.playSound("itemAcquired")
 	worldNode.itemSlots.setKeySlot(true)
 	dialogSet_handler("You found a Key!")
 	worldNode.keyBlackList.append(furnitureData.furnitureName)

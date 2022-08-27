@@ -6,7 +6,6 @@ onready var menuScene = load("res://scenes/Interactables/menu.tscn")
 onready var generalRoomScene = load("res://scenes/Rooms/GeneralRoom.tscn")
 onready var itemSlots = $itemSlots;
 
-
 onready var actionBtns = $actionBtns;
 onready var useBtn = load("res://scenes/Interactables/UseButton.tscn")
 onready var roomDialog_scene = load("res://scenes/Interactables/roomDialog.tscn")
@@ -79,6 +78,7 @@ func skipDialog():
 	if(!playerhasDied):
 		if(isDialogActive):
 			dialogBoard.get_child(0).queue_free()
+			stopSound("dialogBlip")
 			isDialogActive = false;
 	
 
@@ -120,3 +120,18 @@ func restartGameMenu(completeEnd = false):
 	
 	
 
+func playSound(soundName: String):
+	var soundSlot = $sounds.get_node(soundName)
+	if(!soundSlot.playing):
+		soundSlot.stream = load("res://assets/Sounds/" + soundName + ".wav")
+		soundSlot.play()
+
+
+func stopSound(soundName: String):
+	var soundSlot = $sounds.get_node(soundName)
+	soundSlot.playing = false;
+	
+	
+	
+func _on_backgroundMusic_finished():
+	$sounds/backgroundMusic.playing = true

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/Items/PumpkinCock.png" type="Texture" id=1]
+[ext_resource path="res://Resources/furnitureResource.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+furnitureName = "Pumpkin"
+furnitureSprite = ExtResource( 1 )
+spawnPosition = Vector2( 400, 400 )
+furnitureSize = Vector2( 4, 5 )
+dialogSet = [  ]
+hasKey = false
+furnitureType = "light"
+lightIntensity = 1.0
+lightRange = 3.0
+doorRoom = ""
+door_isLocked = false
+doorIsRight = false

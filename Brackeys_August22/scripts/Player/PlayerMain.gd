@@ -39,7 +39,9 @@ func _process(delta):
 	worldNode.playerCurrentPosition = global_position;
 	playerSpriteFlip(playerVelocity)
 	playerhandleAnimations(playerVelocity, delta)
+	playerHandleSounds(playerVelocity)
 	dialogClick_handler()
+	
 	
 	
 	
@@ -55,16 +57,23 @@ func playerSpriteFlip(playerVelocity : Vector2):
 
 func playerhandleAnimations(playerVel : Vector2, delta):
 	if(!playerIsHit):
-		if !(playerVel.x == 0 and playerVel.y == 0):
+		if !(playerVel.x == 0 and playerVel.y == 0):   #player walking
 			playerAnimatonSprite.play("Walk" + worldNode.playerCurrentItem)
-		else:
+		else:   #player in idle
 			playerAnimatonSprite.play("Idle" + worldNode.playerCurrentItem)
 	else:
 		playerData.playerHitTimer -= delta
 		playerAnimatonSprite.play("Hit")
 		if(playerData.playerHitTimer <= playerData.playerHitDuration):
 			playerIsHit = false;
-		
+
+
+
+func playerHandleSounds(playerVel):
+	if !(playerVel.x == 0 and playerVel.y == 0):   #player walking
+		worldNode.playSound("playerFootsteps")
+	else:   #player in idle
+		pass		
  
 
 
@@ -99,6 +108,7 @@ func enableLighting():
 	if(worldNode.playerHasCandle):
 		if(worldNode.playerCurrentItem == "Candle"):
 			$CandleLight.enabled = true;
+			worldNode.playSound("matchBurn")
 		else:
 			$CandleLight.enabled = false;
 	else:

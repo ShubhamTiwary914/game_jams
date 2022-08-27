@@ -8,6 +8,7 @@ func _ready():
 	setHealthSprites()
 
 
+
 func _on_playerHitbox_body_entered(body):
 	if(body.get("nodeisGhost") == true):
 		body.ghostInRecoil = true;
@@ -27,6 +28,7 @@ func reducePlayerHp():
 	worldNode.playerHp -= 1;
 	if(worldNode.playerHp > 0):
 		$health.get_child(worldNode.playerHp).texture = hpEmpty;
+		worldNode.playSound("hitEffect")
 	else:
 		playerDies()
 	
